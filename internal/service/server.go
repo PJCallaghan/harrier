@@ -12,6 +12,11 @@ func initMux() *http.ServeMux {
 	})
 	return mux
 }
+
+func NewServer() StartableServer {
+	return &httpServer{}
+}
+
 func start() error {
 	mux := initMux()
 	fmt.Println("Server started on port 80. Visit http://localhost:80")
@@ -21,4 +26,10 @@ func start() error {
 
 type StartableServer interface {
 	Start() error
+}
+
+type httpServer struct{}
+
+func (s *httpServer) Start() error {
+	return start()
 }
