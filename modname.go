@@ -1,2 +1,5 @@
-package
-import ("github.com/yourusername/yourprojectname/yourmodule")
+package harrier
+
+import (
+	"github.com/PJCallaghan/harrier/internal"
+)

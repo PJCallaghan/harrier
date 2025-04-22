@@ -1,4 +1,4 @@
-package harrier
+package service
 
 import (
 	"fmt"
@@ -12,9 +12,13 @@ func initMux() *http.ServeMux {
 	})
 	return mux
 }
-
-func main() {
+func start() error {
 	mux := initMux()
 	fmt.Println("Server started on port 80. Visit http://localhost:80")
-	http.ListenAndServe(":80", mux)
+	err := http.ListenAndServe(":80", mux)
+	return err
+}
+
+type StartableServer interface {
+	Start() error
 }
